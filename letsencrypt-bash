@@ -1,19 +1,29 @@
 #!/bin/bash
 
+# days of renewal
+# certificate moves around much? shorten renewal period
+RENEWAL_PERIOD=30
+FILE=/etc/letsencrypt/live/example.com/privkey.pem
+
 while [[ true ]]; do
 	
-	letsencrypt certonly \
-		--text \
-		--agree-tos \
-		--rsa-key-size 4096 \
-		--verbose \
-		--renew-by-default \
-		--standalone-supported-challenges http-01 \
-		--email youremail@example.com \
-		-d example.com \
-		-d another.example.com \
-		--standalone
+	if [[ $(find "$FILE" -mtime "+${RENEWAL_PERIOD}" -print) ]]; then
 	
-	sleep 30d
+		letsencrypt certonly \
+			--text \
+			--agree-tos \
+			--rsa-key-size 4096 \
+			--verbose \
+			--renew-by-default \
+			--standalone-supported-challenges http-01 \
+			--email youremail@example.com \
+			-d example.com \
+			-d another.example.com \
+			--standalone
+	fi
+	
+	END_DATE=`date -d "$(sudo stat -c %y "$FILE") + $RENEWAL_PERIOD days" +%s`
+	NOW_DATE=`date +%s`
+	sleep "$(( $NOW_DATE - $END_DATE ))d"
 
 done
