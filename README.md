@@ -1,7 +1,7 @@
 # docker-letsencrypt
 letsencrypt in docker compose
 
-```
+```yaml
 version: "3"
 
 services:
@@ -16,6 +16,6 @@ services:
 use with nginx
 ```
     location /.well-known/acme-challenge {
-    	proxy_pass http://letsencrypt_host:80;
+    	proxy_pass http://<letsencrypt_host>:80;
     }
 ```
