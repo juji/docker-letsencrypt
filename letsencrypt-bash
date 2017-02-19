@@ -22,6 +22,6 @@ while [[ true ]]; do
 			--standalone
 	fi
 	
-	sleep "${RENEWAL_PERIOD}d"
+	sleep "1d"
 
 done
