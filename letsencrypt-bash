@@ -12,7 +12,7 @@ while [[ true ]]; do
 		--email youremail@example.com \
 		-d example.com \
 		-d another.example.com \
-		--standalone yes
+		--standalone
 	
 	sleep 30d
 
