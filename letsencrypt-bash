@@ -1,0 +1,21 @@
+#!/bin/bash
+
+while [[ true ]]; do
+	
+	letsencrypt certonly \
+		--text \
+		--agree-tos \
+		--rsa-key-size 4096 \
+		--verbose \
+		--renew-by-default \
+		--standalone-supported-challenges http-01 \
+		--email him@jujiyangasli.com \
+		-d storage.jujiyangasli.com \
+		-d git.jujiyangasli.com \
+		-d files.jujiyangasli.com \
+		-d registry.jujiyangasli.com \
+		--standalone yes
+	
+	sleep 30d
+
+done
