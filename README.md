@@ -12,3 +12,10 @@ services:
      - ./letsencrypt-bash:/letsencrypt-bash
    command: bash /letsencrypt-bash
 ```
+
+use with nginx
+```
+    location /.well-known/acme-challenge {
+    	proxy_pass http://letsencrypt_host:80;
+    }
+```
