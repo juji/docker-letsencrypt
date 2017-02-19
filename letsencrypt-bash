@@ -22,8 +22,6 @@ while [[ true ]]; do
 			--standalone
 	fi
 	
-	END_DATE=`date -d "$(sudo stat -c %y "$FILE") + $RENEWAL_PERIOD days" +%s`
-	NOW_DATE=`date +%s`
-	sleep "$(( $NOW_DATE - $END_DATE ))d"
+	sleep "${RENEWAL_PERIOD}d"
 
 done
