@@ -9,11 +9,9 @@ while [[ true ]]; do
 		--verbose \
 		--renew-by-default \
 		--standalone-supported-challenges http-01 \
-		--email him@jujiyangasli.com \
-		-d storage.jujiyangasli.com \
-		-d git.jujiyangasli.com \
-		-d files.jujiyangasli.com \
-		-d registry.jujiyangasli.com \
+		--email youremail@example.com \
+		-d example.com \
+		-d another.example.com \
 		--standalone yes
 	
 	sleep 30d
